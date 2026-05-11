@@ -1,0 +1,455 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>QuetzalcoatlusRBLX</title>
+
+<style>
+
+*{
+  margin:0;
+  padding:0;
+  box-sizing:border-box;
+}
+
+body{
+  font-family:Arial, sans-serif;
+  min-height:100vh;
+  display:flex;
+  justify-content:center;
+  align-items:center;
+  overflow:hidden;
+  position:relative;
+  color:white;
+
+  background:linear-gradient(
+    135deg,
+    #000000,
+    #0f0f0f,
+    #1a1a1a,
+    #050505
+  );
+
+  background-size:400% 400%;
+  animation:bgMove 12s ease infinite;
+}
+
+/* Animated Background */
+
+@keyframes bgMove{
+  0%{
+    background-position:0% 50%;
+  }
+  50%{
+    background-position:100% 50%;
+  }
+  100%{
+    background-position:0% 50%;
+  }
+}
+
+.bg{
+  position:absolute;
+  width:100%;
+  height:100%;
+  overflow:hidden;
+  z-index:0;
+}
+
+.circle{
+  position:absolute;
+  border-radius:50%;
+  background:rgba(255,255,255,0.04);
+  border:1px solid rgba(255,255,255,0.08);
+  backdrop-filter:blur(5px);
+  animation:float 10s linear infinite;
+}
+
+.circle:nth-child(1){
+  width:240px;
+  height:240px;
+  top:8%;
+  left:-70px;
+}
+
+.circle:nth-child(2){
+  width:180px;
+  height:180px;
+  bottom:10%;
+  right:-50px;
+}
+
+.circle:nth-child(3){
+  width:120px;
+  height:120px;
+  top:70%;
+  left:40%;
+}
+
+@keyframes float{
+  0%{
+    transform:translateY(0px) rotate(0deg);
+  }
+
+  50%{
+    transform:translateY(-20px) rotate(180deg);
+  }
+
+  100%{
+    transform:translateY(0px) rotate(360deg);
+  }
+}
+
+/* Card */
+
+.card{
+  position:relative;
+  z-index:1;
+
+  width:90%;
+  max-width:430px;
+
+  padding:35px;
+
+  border-radius:28px;
+
+  background:rgba(255,255,255,0.06);
+
+  backdrop-filter:blur(18px);
+
+  border:1px solid rgba(255,255,255,0.1);
+
+  box-shadow:0 10px 40px rgba(0,0,0,0.5);
+
+  text-align:center;
+}
+
+/* Profile */
+
+.pfp{
+  width:120px;
+  height:120px;
+  border-radius:50%;
+  object-fit:cover;
+
+  border:3px solid rgba(255,255,255,0.85);
+
+  margin-bottom:18px;
+
+  box-shadow:0 0 25px rgba(255,255,255,0.12);
+}
+
+h1{
+  font-size:32px;
+
+  margin-bottom:8px;
+
+  text-align:center;
+
+  width:100%;
+
+  display:flex;
+
+  justify-content:center;
+
+  align-items:center;
+
+  line-height:1.2;
+
+  word-break:break-word;
+}
+
+.bio{
+  color:#d0d0d0;
+  margin-bottom:28px;
+  font-size:15px;
+}
+
+/* Social Buttons */
+
+.social{
+  position:relative;
+
+  display:flex;
+
+  align-items:center;
+
+  justify-content:center;
+
+  gap:12px;
+
+  width:100%;
+
+  padding:16px;
+
+  margin:14px 0;
+
+  border-radius:16px;
+
+  text-decoration:none;
+
+  color:white;
+
+  background:rgba(255,255,255,0.06);
+
+  border:1px solid rgba(255,255,255,0.12);
+
+  overflow:hidden;
+
+  transition:0.25s;
+
+  font-weight:bold;
+
+  font-size:16px;
+}
+
+.social:hover{
+  transform:translateY(-3px) scale(1.02);
+
+  background:rgba(255,255,255,0.14);
+
+  box-shadow:0 0 18px rgba(255,255,255,0.08);
+}
+
+/* Shine Effect */
+
+.social::before{
+  content:"";
+
+  position:absolute;
+
+  top:0;
+
+  left:-120%;
+
+  width:60%;
+
+  height:100%;
+
+  background:linear-gradient(
+    90deg,
+    transparent,
+    rgba(255,255,255,0.22),
+    transparent
+  );
+
+  transform:skewX(-20deg);
+
+  animation:shine 3s infinite;
+}
+
+@keyframes shine{
+  0%{
+    left:-120%;
+  }
+
+  100%{
+    left:140%;
+  }
+}
+
+/* Icons */
+
+.icon{
+  width:26px;
+  height:26px;
+  object-fit:contain;
+}
+
+/* Latest Video */
+
+.latest-video{
+  margin-top:28px;
+}
+
+.latest-video h2{
+  font-size:22px;
+  margin-bottom:14px;
+}
+
+#videoLink{
+  text-decoration:none;
+  color:white;
+}
+
+#thumbnail{
+  width:100%;
+  border-radius:18px;
+  margin-bottom:12px;
+  transition:0.25s;
+  border:1px solid rgba(255,255,255,0.08);
+}
+
+#thumbnail:hover{
+  transform:scale(1.02);
+}
+
+#videoTitle{
+  color:#d7d7d7;
+  font-size:15px;
+}
+
+/* Footer */
+
+.footer{
+  margin-top:24px;
+  color:#9e9e9e;
+  font-size:13px;
+}
+
+</style>
+</head>
+
+<body>
+
+<!-- BACKGROUND -->
+
+<div class="bg">
+  <div class="circle"></div>
+  <div class="circle"></div>
+  <div class="circle"></div>
+</div>
+
+<!-- MAIN CARD -->
+
+<div class="card">
+
+  <!-- PROFILE PICTURE -->
+
+  <img class="pfp" src="https://cdn.discordapp.com/attachments/1136904354100690944/1503205514371137666/Untitled38_20260509105738.png?ex=6a0280ba&is=6a012f3a&hm=208ef87003a90d157a39e87996a0652c2a7d635eb9bb1685a0aa8ebda8dfe6d6&">
+
+  <!-- NAME -->
+
+  <h1>Quetzalcoatlus</h1>
+
+  <!-- BIO -->
+
+  <p class="bio">
+    Roblox • Gaming • Content Creator
+  </p>
+
+  <!-- TIKTOK -->
+
+  <a class="social"
+     href="https://tiktok.com/@quetzalcoatlusrbl"
+     target="_blank">
+
+     <img class="icon"
+     src="https://cdn.discordapp.com/attachments/1136904354100690944/1503205006827061408/images_10.jpg?ex=6a028041&is=6a012ec1&hm=b017b47db1ff31e146dc4547f5d09911b89e83a8f3d75845756894d50aa5a90d&">
+
+     TikTok
+
+  </a>
+
+  <!-- YOUTUBE -->
+
+  <a class="social"
+     href="https://www.youtube.com/@QuetzalcoatlusRBLX"
+     target="_blank">
+
+     <img class="icon"
+     src="https://cdn.discordapp.com/attachments/1136904354100690944/1503204996278386788/YouTube_full-color_icon_2017.svg.png?ex=6a02803f&is=6a012ebf&hm=88a697cd0f01f8c12d92e1e3901c60ab5d1410944e770710b3d50f985482320b&">
+
+     YouTube
+
+  </a>
+
+  <!-- DISCORD -->
+
+  <a class="social"
+     href="https://discord.gg/ab5vYbTKrS"
+     target="_blank">
+
+     <img class="icon"
+     src="https://cdn.discordapp.com/attachments/1136904354100690944/1503204991559663786/discord-logo-icon-editorial-free-vector.jpg?ex=6a02803e&is=6a012ebe&hm=dd8cdb12d584abf580f10d6cf2c0c600fcb44b4347fd1696e8785e9288dd347f&">
+
+     Discord Server
+
+  </a>
+
+  <!-- LATEST VIDEO -->
+
+  <div class="latest-video">
+
+    <h2>Latest Video</h2>
+
+    <a id="videoLink" target="_blank">
+
+      <img id="thumbnail">
+
+      <p id="videoTitle">
+        Loading latest video...
+      </p>
+
+    </a>
+
+  </div>
+
+  <!-- FOOTER -->
+
+  <div class="footer">
+    © 2026 QuetzalcoatlusRBLX
+  </div>
+
+</div>
+
+<!-- YOUTUBE SCRIPT -->
+
+<script>
+
+/*
+PUT YOUR CHANNEL ID BELOW
+Example:
+UCD4uw7A3cO-M8XAj_Q8BGLg
+*/
+
+const channelID = "UCD4uw7A3cO-M8XAj_Q8BGLg";
+
+fetch(
+`https://www.youtube.com/feeds/videos.xml?channel_id=${channelID}`
+)
+
+.then(response => response.text())
+
+.then(str =>
+new window.DOMParser().parseFromString(str, "text/xml")
+)
+
+.then(data => {
+
+  const latestVideo =
+  data.querySelector("entry");
+
+  const title =
+  latestVideo.querySelector("title").textContent;
+
+  const videoId =
+  latestVideo.querySelector("yt\\:videoId").textContent;
+
+  const videoURL =
+  `https://www.youtube.com/watch?v=${videoId}`;
+
+  const thumbnailURL =
+  `https://img.youtube.com/vi/${videoId}/maxresdefault.jpg`;
+
+  document.getElementById("videoTitle").textContent = title;
+
+  document.getElementById("thumbnail").src = thumbnailURL;
+
+  document.getElementById("videoLink").href = videoURL;
+
+})
+
+.catch(() => {
+
+  document.getElementById("videoTitle").textContent =
+  "Could not load latest video.";
+
+});
+
+</script>
+
+</body>
+  </html>
