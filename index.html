@@ -403,21 +403,65 @@ src="https://cdn.discordapp.com/attachments/1136904354100690944/1507012878014877
 
   <h2>Latest Upload</h2>
 
-  <a id="https://youtu.be/ftcjgHkyDlg?si=f-Xd9gToUE0C1V4N"
-     href="https://www.youtube.com/watch?v=f-Xd9gToUE0C1V4N"
-     target="_blank">
+  <a id="videoLink" href="#" target="_blank">
 
     <img id="thumbnail"
-         src="https://img.youtube.com/vi/f-Xd9gToUE0C1V4N
- /maxresdefault.jpg">
+         src="">
 
     <p id="videoTitle">
-      Parkour Spiral 10:52 full run︱Roblox
+      Loading latest upload...
     </p>
 
   </a>
 
 </div>
+
+<script>
+
+const channelID = "UCD4uw7A3cO-M8XAj_Q8BGLg";
+
+/*
+Uses rss2json because GitHub Pages
+cannot directly read YouTube XML feeds
+properly due to CORS.
+*/
+
+fetch(
+`https://api.rss2json.com/v1/api.json?rss_url=https://www.youtube.com/feeds/videos.xml?channel_id=${channelID}`
+)
+
+.then(response => response.json())
+
+.then(data => {
+
+  const latestVideo = data.items[0];
+
+  const videoURL = latestVideo.link;
+
+  const videoTitle = latestVideo.title;
+
+  const thumbnailURL =
+  latestVideo.thumbnail;
+
+  document.getElementById("videoLink").href =
+  videoURL;
+
+  document.getElementById("videoTitle").textContent =
+  videoTitle;
+
+  document.getElementById("thumbnail").src =
+  thumbnailURL;
+
+})
+
+.catch(() => {
+
+  document.getElementById("videoTitle").textContent =
+  "Could not load latest upload.";
+
+});
+
+</script>
 
 </body>
   </html>
