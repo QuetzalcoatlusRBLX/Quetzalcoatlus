@@ -397,61 +397,27 @@ src="https://cdn.discordapp.com/attachments/1136904354100690944/1507012878014877
 
 </div>
 
-<!-- YOUTUBE SCRIPT -->
+<!-- LATEST VIDEO -->
 
-<script>
+<div class="latest-video">
 
-/*
-PUT YOUR CHANNEL ID BELOW
-Example:
-UCD4uw7A3cO-M8XAj_Q8BGLg
-*/
+  <h2>Latest Upload</h2>
 
-const channelID = "UCD4uw7A3cO-M8XAj_Q8BGLg";
+  <a id="https://youtu.be/ftcjgHkyDlg?si=f-Xd9gToUE0C1V4N"
+     href="https://www.youtube.com/watch?v=f-Xd9gToUE0C1V4N"
+     target="_blank">
 
-fetch(
-`https://www.youtube.com/feeds/videos.xml?channel_id=${channelID}`
-)
+    <img id="thumbnail"
+         src="https://img.youtube.com/vi/f-Xd9gToUE0C1V4N
+ /maxresdefault.jpg">
 
-.then(response => response.text())
+    <p id="videoTitle">
+      Parkour Spiral 10:52 full run︱Roblox
+    </p>
 
-.then(str =>
-new window.DOMParser().parseFromString(str, "text/xml")
-)
+  </a>
 
-.then(data => {
-
-  const latestVideo =
-  data.querySelector("entry");
-
-  const title =
-  latestVideo.querySelector("title").textContent;
-
-  const videoId =
-  latestVideo.querySelector("yt\\:videoId").textContent;
-
-  const videoURL =
-  `https://www.youtube.com/watch?v=${videoId}`;
-
-  const thumbnailURL =
-  `https://img.youtube.com/vi/${videoId}/maxresdefault.jpg`;
-
-  document.getElementById("videoTitle").textContent = title;
-
-  document.getElementById("thumbnail").src = thumbnailURL;
-
-  document.getElementById("videoLink").href = videoURL;
-
-})
-
-.catch(() => {
-
-  document.getElementById("videoTitle").textContent =
-  "Could not load latest video.";
-
-});
-
-</script>
+</div>
 
 </body>
   </html>
