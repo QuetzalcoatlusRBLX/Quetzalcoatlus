@@ -293,41 +293,6 @@ h1{
   font-size:15px;
 }
 
-.music-player{
-  margin-top:28px;
-}
-
-.music-player h2{
-  margin-bottom:14px;
-  font-size:22px;
-}
-
-.music-player audio{
-  width:100%;
-  border-radius:14px;
-}
-
-#songName{
-  margin-top:12px;
-  color:#cfcfcf;
-  font-size:14px;
-}
-
-.sub-counter{
-  margin-top:28px;
-}
-
-.sub-counter h3{
-  font-size:20px;
-  margin-bottom:10px;
-}
-
-#subCount{
-  font-size:28px;
-  font-weight:bold;
-  color:white;
-}
-
 /* Footer */
 
 .footer{
@@ -440,34 +405,6 @@ src="https://cdn.discordapp.com/attachments/1136904354100690944/1507012878014877
 
 </div>
 
-<!-- LIVE SUB COUNT -->
-
-<div class="sub-counter">
-
-  <h3>Subscribers</h3>
-
-  <p id="subCount">
-    Loading...
-  </p>
-
-</div>
-
-<!-- RANDOM MUSIC PLAYER -->
-
-<div class="music-player">
-
-  <button id="musicBtn">
-    🎵 Play Random Music
-  </button>
-
-  <p id="songName">
-    No music playing
-  </p>
-
-  <audio id="bgMusic"></audio>
-
-</div>
-
   <!-- FOOTER -->
 
   <div class="footer">
@@ -518,111 +455,6 @@ fetch(
 
   document.getElementById("videoTitle").textContent =
   "Could not load latest upload.";
-
-});
-
-</script>
-
-<script>
-
-fetch(
-"https://img.shields.io/youtube/channel/subscribers/UCD4uw7A3cO-M8XAj_Q8BGLg?style=social"
-)
-
-.then(response => response.text())
-
-.then(data => {
-
-  document.getElementById("subCount")
-  .textContent =
-  "Visible on YouTube";
-
-})
-
-.catch(() => {
-
-  document.getElementById("subCount")
-  .textContent =
-  "Could not load.";
-
-});
-
-</script>
-
-<script>
-
-const songs = [
-
-  {
-    name:"Lofi Chill",
-    file:"https://cdn.pixabay.com/download/audio/2022/03/15/audio_c8c8a73467.mp3"
-  },
-
-  {
-    name:"Gaming Beat",
-    file:"https://cdn.pixabay.com/download/audio/2022/10/25/audio_9464986c1d.mp3"
-  },
-
-  {
-    name:"Phonk Drift",
-    file:"https://cdn.pixabay.com/download/audio/2022/08/02/audio_88447a4c5b.mp3"
-  }
-
-];
-
-const music =
-document.getElementById("bgMusic");
-
-const button =
-document.getElementById("musicBtn");
-
-const songName =
-document.getElementById("songName");
-
-let playing = false;
-
-function playRandomSong(){
-
-  const randomSong =
-  songs[Math.floor(Math.random() * songs.length)];
-
-  music.src =
-  randomSong.file;
-
-  songName.textContent =
-  "Now Playing: " + randomSong.name;
-
-  music.play();
-
-}
-
-button.onclick = () => {
-
-  if(!playing){
-
-    playRandomSong();
-
-    button.innerHTML =
-    "⏸ Pause Music";
-
-    playing = true;
-
-  }else{
-
-    music.pause();
-
-    button.innerHTML =
-    "🎵 Play Random Music";
-
-    playing = false;
-
-  }
-
-};
-
-music.addEventListener("ended", () => {
-
-  playRandomSong();
 
 });
 
