@@ -293,6 +293,35 @@ h1{
   font-size:15px;
 }
 
+.music-player{
+  margin-top:28px;
+}
+
+.music-player h2{
+  margin-bottom:14px;
+  font-size:22px;
+}
+
+.music-player audio{
+  width:100%;
+  border-radius:14px;
+}
+
+.sub-counter{
+  margin-top:28px;
+}
+
+.sub-counter h3{
+  font-size:20px;
+  margin-bottom:10px;
+}
+
+#subCount{
+  font-size:28px;
+  font-weight:bold;
+  color:white;
+}
+
 /* Footer */
 
 .footer{
@@ -405,6 +434,30 @@ src="https://cdn.discordapp.com/attachments/1136904354100690944/1507012878014877
 
 </div>
 
+<!-- LIVE SUB COUNT -->
+
+<div class="sub-counter">
+
+  <h3>Subscribers</h3>
+
+  <p id="subCount">
+    Loading...
+  </p>
+
+</div>
+
+<!-- MUSIC PLAYER -->
+
+<div class="music-player">
+
+  <h2>Background Music</h2>
+
+  <audio controls loop>
+    <source src="music.mp3" type="audio/mpeg">
+  </audio>
+
+</div>
+
   <!-- FOOTER -->
 
   <div class="footer">
@@ -455,6 +508,32 @@ fetch(
 
   document.getElementById("videoTitle").textContent =
   "Could not load latest upload.";
+
+});
+
+</script>
+
+<script>
+
+fetch(
+"https://img.shields.io/youtube/channel/subscribers/UCD4uw7A3cO-M8XAj_Q8BGLg?style=social"
+)
+
+.then(response => response.text())
+
+.then(data => {
+
+  document.getElementById("subCount")
+  .textContent =
+  "Visible on YouTube";
+
+})
+
+.catch(() => {
+
+  document.getElementById("subCount")
+  .textContent =
+  "Could not load.";
 
 });
 
